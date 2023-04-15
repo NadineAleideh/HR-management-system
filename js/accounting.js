@@ -223,4 +223,4 @@ function infoDepartment() {
 
 
 
-// render()
+render()
