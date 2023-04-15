@@ -28,17 +28,17 @@ Employee.prototype.calculateSalary = function () {
         if (this.level == "Senior") {
 
             this.salary = randomNumberForSalary (1500,2000);//random salary
-            this.salary = this.salary - (this.salary * 0.075);//net salary
+            this.salary =Math.floor( this.salary - (this.salary * 0.075));//net salary
         }
         if (this.level == "Mid-Senior") {
     
             this.salary = randomNumberForSalary (1000,1500);
-            this.salary = this.salary - (this.salary * 0.075);
+            this.salary = Math.floor(this.salary - (this.salary * 0.075));
         }
         if (this.level == "Junior") {
             
             this.salary = randomNumberForSalary (500,1000);
-            this.salary = this.salary - (this.salary* 0.075);
+            this.salary =Math.floor( this.salary - (this.salary* 0.075));
         }
         return this.salary;
 }
@@ -49,9 +49,16 @@ function randomNumberForSalary (min,max){
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-Employee.prototype.renderData = function () {
-    
-if(this.department=="Administration"){
+function renderData () {
+
+    getEmployee()
+
+    if(allEmployee == null){
+        allEmployee = [];
+    }   
+
+    for(let i=0;i< allEmployee.length ;i++){
+if(allEmployee[i].department=="Administration"){
     const container = document.getElementById('Administration');
         const divEl = document.createElement('div');
         divEl.classList.add("card");
@@ -60,25 +67,71 @@ if(this.department=="Administration"){
         const imgEl = document.createElement('img');
         imgEl.classList.add("empImg");
         divEl.appendChild(imgEl);
-        imgEl.src=this.imgUrl;
+        imgEl.src=allEmployee[i].imgUrl;
 
         const pEl = document.createElement('p');
-        pEl.classList.add("p1");
-        pEl.textContent = `Name:  ${this.fullName}- ID:  ${this.employeeId}`;
+        pEl.classList.add("p");
+        pEl.textContent = `Name:  ${allEmployee[i].fullName}`;
         divEl.appendChild(pEl);
     
         const pE2 = document.createElement('p');
-        pE2.classList.add("p2");
-        pE2.textContent = `Department:  ${this.department}- Level:  ${this.level}`;
+        pE2.classList.add("p");
+        pE2.textContent = `ID:  ${allEmployee[i].employeeId}`;
         divEl.appendChild(pE2);
-    
+
         const pE3 = document.createElement('p');
-        pE3.classList.add("p3");
-        pE3.textContent = `Salary:  ${this.salary}`;
+        pE3.classList.add("p");
+        pE3.textContent = `Department:  ${allEmployee[i].department}`;
         divEl.appendChild(pE3);
+    
+        const pE4 = document.createElement('p');
+        pE4.classList.add("p");
+        pE4.textContent = `Level:  ${allEmployee[i].level}`;
+        divEl.appendChild(pE4);
+        
+        const pE5 = document.createElement('p');
+        pE5.classList.add("p");
+        pE5.textContent = `Salary:  ${allEmployee[i].salary}`;
+        divEl.appendChild(pE5);
     }
-    if(this.department=="Marketing"){
+    if(allEmployee[i].department=="Marketing"){
         const container = document.getElementById('Marketing');
+        const divEl = document.createElement('div');
+        divEl.classList.add("card");
+        container.appendChild(divEl);
+
+        const imgEl = document.createElement('img');
+        imgEl.classList.add("empImg");
+        divEl.appendChild(imgEl);
+        imgEl.src=allEmployee[i].imgUrl;
+
+        const pEl = document.createElement('p');
+        pEl.classList.add("p");
+        pEl.textContent = `Name:  ${allEmployee[i].fullName}`;
+        divEl.appendChild(pEl);
+    
+        const pE2 = document.createElement('p');
+        pE2.classList.add("p");
+        pE2.textContent = `ID:  ${allEmployee[i].employeeId}`;
+        divEl.appendChild(pE2);
+
+        const pE3 = document.createElement('p');
+        pE3.classList.add("p");
+        pE3.textContent = `Department:  ${allEmployee[i].department}`;
+        divEl.appendChild(pE3);
+    
+        const pE4 = document.createElement('p');
+        pE4.classList.add("p");
+        pE4.textContent = `Level:  ${allEmployee[i].level}`;
+        divEl.appendChild(pE4);
+        
+        const pE5 = document.createElement('p');
+        pE5.classList.add("p");
+        pE5.textContent = `Salary:  ${allEmployee[i].salary}`;
+        divEl.appendChild(pE5);
+        }
+        if(allEmployee[i].department=="Development"){
+            const container = document.getElementById('Development');
             const divEl = document.createElement('div');
             divEl.classList.add("card");
             container.appendChild(divEl);
@@ -86,25 +139,35 @@ if(this.department=="Administration"){
             const imgEl = document.createElement('img');
             imgEl.classList.add("empImg");
             divEl.appendChild(imgEl);
-            imgEl.src=this.imgUrl;
+            imgEl.src=allEmployee[i].imgUrl;
     
             const pEl = document.createElement('p');
-            pEl.classList.add("p1");
-            pEl.textContent = `Name:  ${this.fullName}- ID:  ${this.employeeId}`;
+            pEl.classList.add("p");
+            pEl.textContent = `Name:  ${allEmployee[i].fullName}`;
             divEl.appendChild(pEl);
         
             const pE2 = document.createElement('p');
-            pE2.classList.add("p2");
-            pE2.textContent = `Department:  ${this.department}- Level:  ${this.level}`;
+            pE2.classList.add("p");
+            pE2.textContent = `ID:  ${allEmployee[i].employeeId}`;
             divEl.appendChild(pE2);
-        
+    
             const pE3 = document.createElement('p');
-            pE3.classList.add("p3");
-            pE3.textContent = `Salary:  ${this.salary}`;
+            pE3.classList.add("p");
+            pE3.textContent = `Department:  ${allEmployee[i].department}`;
             divEl.appendChild(pE3);
-        }
-        if(this.department=="Development"){
-            const container = document.getElementById('Development');
+        
+            const pE4 = document.createElement('p');
+            pE4.classList.add("p");
+            pE4.textContent = `Level:  ${allEmployee[i].level}`;
+            divEl.appendChild(pE4);
+            
+            const pE5 = document.createElement('p');
+            pE5.classList.add("p");
+            pE5.textContent = `Salary:  ${allEmployee[i].salary}`;
+            divEl.appendChild(pE5);
+            }
+            if(allEmployee[i].department=="Finance"){
+                const container = document.getElementById('Finance');
                 const divEl = document.createElement('div');
                 divEl.classList.add("card");
                 container.appendChild(divEl);
@@ -112,49 +175,34 @@ if(this.department=="Administration"){
                 const imgEl = document.createElement('img');
                 imgEl.classList.add("empImg");
                 divEl.appendChild(imgEl);
-                imgEl.src=this.imgUrl;
+                imgEl.src=allEmployee[i].imgUrl;
         
                 const pEl = document.createElement('p');
-                pEl.classList.add("p1");
-                pEl.textContent = `Name:  ${this.fullName}- ID:  ${this.employeeId}`;
+                pEl.classList.add("p");
+                pEl.textContent = `Name:  ${allEmployee[i].fullName}`;
                 divEl.appendChild(pEl);
             
                 const pE2 = document.createElement('p');
-                pE2.classList.add("p2");
-                pE2.textContent = `Department:  ${this.department}- Level:  ${this.level}`;
+                pE2.classList.add("p");
+                pE2.textContent = `ID:  ${allEmployee[i].employeeId}`;
                 divEl.appendChild(pE2);
-            
+        
                 const pE3 = document.createElement('p');
-                pE3.classList.add("p3");
-                pE3.textContent = `Salary:  ${this.salary}`;
+                pE3.classList.add("p");
+                pE3.textContent = `Department:  ${allEmployee[i].department}`;
                 divEl.appendChild(pE3);
-            }
-            if(this.department=="Finance"){
-                const container = document.getElementById('Finance');
-                    const divEl = document.createElement('div');
-                    divEl.classList.add("card");
-                    container.appendChild(divEl);
             
-                    const imgEl = document.createElement('img');
-                    imgEl.classList.add("empImg");
-                    divEl.appendChild(imgEl);
-                    imgEl.src=this.imgUrl;
-            
-                    const pEl = document.createElement('p');
-                    pEl.classList.add("p1");
-                    pEl.textContent = `Name:  ${this.fullName}- ID:  ${this.employeeId}`;
-                    divEl.appendChild(pEl);
+                const pE4 = document.createElement('p');
+                pE4.classList.add("p");
+                pE4.textContent = `Level:  ${allEmployee[i].level}`;
+                divEl.appendChild(pE4);
                 
-                    const pE2 = document.createElement('p');
-                    pE2.classList.add("p2");
-                    pE2.textContent = `Department:  ${this.department}- Level:  ${this.level}`;
-                    divEl.appendChild(pE2);
-                
-                    const pE3 = document.createElement('p');
-                    pE3.classList.add("p3");
-                    pE3.textContent = `Salary:  ${this.salary}`;
-                    divEl.appendChild(pE3);
+                const pE5 = document.createElement('p');
+                pE5.classList.add("p");
+                pE5.textContent = `Salary:  ${allEmployee[i].salary}`;
+                divEl.appendChild(pE5);
                 }
+            }
             
 }
 
@@ -166,11 +214,24 @@ function addNewEmployee(event){
     let imgUrl = event.target.imgurl.value;
 
     let newEmployee = new Employee(fullName,department,level,imgUrl);
-    
-    newEmployee .generateEmpId();
-    newEmployee .calculateSalary();
-    newEmployee .renderData();
+   
+    newEmployee.generateEmpId();
+    newEmployee.calculateSalary();
+   
+    let allEmployeeJson= JSON.stringify(allEmployee);
+    localStorage.setItem('allEmployee',allEmployeeJson);
+  
 }
+
+function getEmployee(){
+    let allEmployeeJson= localStorage.getItem('allEmployee');
+    let allEmployeeFromStorage= JSON.parse(allEmployeeJson);
+    allEmployee=allEmployeeFromStorage;
+}
+
+getEmployee()
+renderData()
+// console.log(allEmployee);
 
 
 // let employee1 = new Employee('Ghazi Samer', 'Administration', 'Senior');
@@ -183,4 +244,3 @@ function addNewEmployee(event){
 
 
 
-console.log(allEmployee);
