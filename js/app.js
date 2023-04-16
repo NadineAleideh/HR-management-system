@@ -68,10 +68,10 @@ if(allEmployee[i].department=="Administration"){
         imgEl.classList.add("empImg");
         divEl.appendChild(imgEl);
         
-        if(this.imgUrl){
-        imgEl.src=this.imgUrl;
+        if(allEmployee[i].imgUrl){
+        imgEl.src=allEmployee[i].imgUrl;
         }else{
-            imgEl.src=`./assets/imgs/${this.fullName}.png`
+            imgEl.src=`./assets/imgs/${allEmployee[i].fullName}.png`
         }
 
         const pEl = document.createElement('p');

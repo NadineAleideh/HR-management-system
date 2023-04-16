@@ -216,7 +216,7 @@ function infoDepartment() {
 
     eachDepartment.totalEmployees = eachDepartment.countAdministration + eachDepartment.countMarketing + eachDepartment.countDevelopment + eachDepartment.countFinance;
     eachDepartment.totalSalary = eachDepartment.salaryAdministration + eachDepartment.salaryMarketing + eachDepartment.salaryDevelopment + eachDepartment.salaryFinance;
-    eachDepartment.totalAvgSalary = Math.floor((eachDepartment.avgAdministration + eachDepartment.avgMarketing + eachDepartment.avgDevelopment + eachDepartment.avgFinance) / eachDepartment.totalEmployees);
+    eachDepartment.totalAvgSalary = Math.floor((eachDepartment.salaryAdministration + eachDepartment.salaryMarketing + eachDepartment.salaryDevelopment + eachDepartment.salaryFinance) / eachDepartment.totalEmployees);
 
     return eachDepartment;
 }
