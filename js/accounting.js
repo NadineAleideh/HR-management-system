@@ -20,6 +20,8 @@ let eachDepartment = {
     totalAvgSalary: 0.0
 };
 
+
+
 // creating Thead of the table//
 let thead = document.getElementById('thead');
 let trEl = document.createElement('tr');
@@ -139,7 +141,6 @@ getEmployee()
 infoDepartment()
 // console.log('new', allEmployee);
 // console.log(eachDepartment);
-
 
 function render() {
 
