@@ -8,7 +8,7 @@ function Employee( fullName, department, level, imgUrl) {
     this.fullName = fullName;
     this.department = department;
     this.level = level;
-    this.imgUrl = `./assets/imgs/${this.fullName}.png`;
+    this.imgUrl = imgUrl;
     this.employeeId=0;
     this.salary=0;
 
@@ -60,7 +60,11 @@ if(this.department=="Administration"){
         const imgEl = document.createElement('img');
         imgEl.classList.add("empImg");
         divEl.appendChild(imgEl);
+        if(this.imgUrl){
         imgEl.src=this.imgUrl;
+        }else{
+            imgEl.src=`./assets/imgs/${this.fullName}.png`
+        }
 
         const pEl = document.createElement('p');
         pEl.classList.add("p1");
